@@ -1,6 +1,7 @@
 # By default Volt generates this controller for your Main component
 module Main
   class MainController < Volt::ModelController
+    before_action :require_login
     model :store
     def index
       # Add code for when the index view is loaded
@@ -11,14 +12,14 @@ module Main
     end
 
     def add_expense
-      page._expenses << {description: page._new_bill_description, amount: page._new_bill_amount}
+      expenses.create({description: page._new_bill_description, amount: page._new_bill_amount})
       page._new_bill_description = ""
       page._new_bill_amount = 0
     end
 
     def split_up
-      users = store.users.count
-      page._split_amount = page._expenses.map{|e| e._amount.to_i}.reduce(:+)
+      users_count = 
+      expense_histories.first.total = expenses.then{|e| store.users.count.then { |v| e.map{|e| e._amount.to_i}.reduce(:+) / v}}
     end
 
     private

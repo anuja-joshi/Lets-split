@@ -1,21 +1,20 @@
 <:Title>
   Expenses
 
-<:Body>
-  
-  
+<:Body>  
 
   <div class="container">
-    <div class="row">
-      <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"> Users(Including you): {{users.size}} </div>
+      <div class="panel-body">
         {{ store.users.each do |user| }}
-          <!-- {{ if user._id != Volt.user._id }} -->
-          <h1>  {{user._name}} </h1>
+          <!-- {{ if user.id == Volt.current_user.id }}           -->
+          <div class="col-sm-1"><h4>  {{user._name}} </h4></div>
           <!-- {{ end }} -->
         {{ end }}
       </div>
-  </div>
-  
+    </div>    
+
     <h2> Expenses </h2>
     <table class="table table-bordered" >
       <tr>
@@ -23,7 +22,7 @@
         <th> Amount </th>
         <th> Action </th>
       </tr>
-      {{ page._expenses.each_with_index do |expense, index| }}
+      {{ expenses.each_with_index do |expense, index| }}
       <tr>
         <td> {{expense._description}} </td>
         <td> {{expense._amount}} </td>
@@ -57,5 +56,5 @@
     <div class="span7 text-center">
       <button e-click="split_up" class="btn btn-success "> Lets Split </button>
     </div>
-    <h2> share for each: {{page._split_amount}} <h2>
+    <h2> Everbody's share: {{expense_histories.first.total}} <h2>
   </div>
