@@ -44,8 +44,8 @@ Volt.configure do |config|
   # config.db_host = 'localhost'
   # config.db_port = 27017
 
-  if ENV['MONGOHQ_URI'].present?
-    config.db_uri = ENV['MONGOHQ_URI'] # you will have to set this on heroku
+  if ENV['MONGOLAB_URI'].present?
+    config.db_uri = ENV['MONGOLAB_URI'] # you will have to set this on heroku
   else
     config.db_host = 'localhost'
     config.db_port = 27017
