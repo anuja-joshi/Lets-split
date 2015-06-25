@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.1.2'
 gem 'volt', '0.9.3'
 
 # volt uses mongo as the default data store.
