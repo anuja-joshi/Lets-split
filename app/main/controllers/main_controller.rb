@@ -12,7 +12,6 @@ module Main
     end
 
     def add_expense
-      p local_store._new_bill_amount
       expenses.create({description: page._new_bill_description, amount: page._new_bill_amount})
       page._new_bill_description = ""
       page._new_bill_amount = 0
