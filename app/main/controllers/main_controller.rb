@@ -12,14 +12,15 @@ module Main
     end
 
     def add_expense
+      p local_store._new_bill_amount
       expenses.create({description: page._new_bill_description, amount: page._new_bill_amount})
       page._new_bill_description = ""
       page._new_bill_amount = 0
     end
 
     def split_up
-      users_count = 
-      expense_histories.first.total = expenses.then{|e| store.users.count.then { |v| e.map{|e| e._amount.to_i}.reduce(:+) / v}}
+      amount = expenses.map{|e| e._amount}.reduce(:+)
+      users.count.then { |c| (amount / c).round(2)}
     end
 
     private
